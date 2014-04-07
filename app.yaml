@@ -1,0 +1,22 @@
+application: iostarter
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+libraries:
+- name: jinja2
+  version: latest
+- name: endpoints
+  version: latest
+
+handlers:
+- url: /static
+  static_dir: static
+# Endpoints handler
+- url: /_ah/spi/.*
+  script: services.application
+- url: /.*
+  script: handlers.app
+
+
